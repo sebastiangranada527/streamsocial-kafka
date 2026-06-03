@@ -1,0 +1,41 @@
+name: CI
+
+# Se ejecuta en cada PR hacia main o develop
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [develop]
+
+jobs:
+  test:
+    name: Tests y Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Instalar dependencias
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Linting con ruff
+        run: |
+          cd backend
+          ruff check .
+
+      - name: Tests unitarios
+        run: |
+          cd backend
+          pytest tests/ -v --tb=short
+        # Los tests de integración requieren Kafka, se omiten en CI por ahora
+        # En el futuro se pueden agregar con un service container de Kafka

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Environment variables — NEVER comittear archivos .env reales
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.next/
+frontend/build/
+
+# Docker
+docker-compose.override.yml
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
