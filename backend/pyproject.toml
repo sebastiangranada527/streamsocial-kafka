@@ -1,0 +1,17 @@
+# Configuración central de herramientas Python del backend.
+
+[tool.pytest.ini_options]
+# Añade el directorio actual (backend/) a sys.path para que
+# pytest pueda importar nuestros paquetes: models, producers, etc.
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+# Longitud máxima de línea
+line-length = 88
+target-version = "py39"
+
+[tool.ruff.lint]
+# Reglas activas: errores de pycodestyle (E), pyflakes (F),
+# imports ordenados (I)
+select = ["E", "F", "I"]
